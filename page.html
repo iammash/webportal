@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Zambia MOH Portal</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script src="ext-all.js"></script>
+    <script src="jquery-2.2.4.min.js"></script>
+    <script src="chart.js"></script>
+    <script src="js/reporttable.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<script>
+    function populatepe(p1,p2){
+        var p1 = document.getElementById(p1);
+        var p2 = document.getElementById(p2);
+
+        p2.innerHTML = "";
+        if(p1.value == "yearly"){
+            var optionArray = [
+                "|",
+                "2017|2017",
+                "2016|2016",
+                "2015|2015",
+                "2014|2014"
+            ];
+        } else if (p1.value == "quarterly"){
+            var optionArray = [
+                "|",
+                "2017Q1|1st Quarter 2017",
+                "2017Q2|2nd Quarter 2017",
+                "2017Q3|3rd Quarter 2017",
+                "2017Q4|4th Quarter 2017"
+            ];
+        }
+        //Add options to dropdown
+        for(var option in optionArray){
+            var pair = optionArray[option].split("|");
+            var newOption = document.createElement("option");
+            newOption.value = pair[0];
+            newOption.innerHTML = pair[1];
+            p2.options.add(newOption);
+        }
+    }
+    /* populate Org Units here
+
+    function populateou(o1,o2){
+        var o1 = document.getElementById(o1);
+        var o2 = document.getElementById(o2);
+
+        o2.innerHTML = "";
+        if(o1.value == "zambia"){
+            var optionArray = [
+                "|",
+                "KozcEjeTyuD,LEVEL-3|Lusaka Pronvince",
+                "AWn3s2RqgAN,LEVEL-3|Central Province",
+                "g1bv2xjtV0w,LEVEL-3|Western Pronvince"
+            ];
+        } else if (o1.value == "lp"){
+            var optionArray = [
+                "|",
+                "KozcEjeTyuD,LEVEL-3|Lusaka Pronvince",
+                "AWn3s2RqgAN,LEVEL-3|Central Province",
+                "g1bv2xjtV0w,LEVEL-3|Western Pronvince"
+            ];
+        }
+        //Add options to dropdown
+        for(var option in optionArray){
+            var pair = optionArray[option].split("|");
+            var newOption = document.createElement("option");
+            newOption.value = pair[0];
+            newOption.innerHTML = pair[1];
+            o2.options.add(newOption);
+        }
+    }
+    */
+
+//DHIS2 plugin code starts here
+var url = 'http://localhost:8080/demo';
+var username = 'rkaponde';
+var password ='Mashekwa1!';
+chartPlugin.url = url;
+chartPlugin.username = username ;
+chartPlugin.password = password ;
+chartPlugin.loadingIndicator = true;
+crossDomain: true;
+
+reportTablePlugin.url = url;
+reportTablePlugin.username = username;
+reportTablePlugin.password = password;
+reportTablePlugin.loadingIndicator = true;
+
+function gettable(yr, ou, level){
+var table1 = {
+    "columns": [
+    {
+      "dimension": "dx",
+      "items": [
+        {
+          "id": "gUSphfBXigb",
+          "name": "Deaths Anaemia 1 to Under 5 Years"
+        },
+        {
+          "id": "AzbXEpR5clB",
+          "name": "Deaths Anaemia Over 5 Years"
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "dimension": "pe",
+      "items": [
+        {
+          "id": yr
+        }
+      ]
+    },
+    {
+      "dimension": "ou",
+      "items": [
+        {
+          "id": level
+        },
+        {
+          "id": ou
+        }
+      ]
+    }
+  ],
+  "filters": null,
+  "legendDisplayStyle": "FILL",
+  "displayDensity": "COMFORTABLE",
+  "hideEmptyRows": true,
+  "hideEmptyColumns": true,
+  "legendDisplayStrategy": "FIXED",
+  "el": "table1"
+};
+return table1;
+}
+
+reportTablePlugin.load(gettable("2016","Ot1P2HjvtvL", "LEVEL-2"));
+
+//chart starts here
+function getchart(yr, ou, level){
+var chart1 = {
+    "columns": [
+    {
+      "dimension": "dx",
+      "items": [
+        {
+          "id": "MRaMX6gBI2h",
+          "name": " Hypertension (total)"
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "dimension": "ou",
+      "items": [
+        {
+          "id": level
+        },
+        {
+          "id": ou
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "dimension": "pe",
+      "items": [
+        {
+          "id": yr
+        }
+      ]
+    }
+  ],
+  "type": "column",
+  "el": "chart1"
+};
+
+var chart2 = {
+    "columns": [
+    {
+      "dimension": "dx",
+      "items": [
+        {
+          "id": "y3L6g8D81G2",
+          "name": "Dental Carries Total"
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "dimension": "ou",
+      "items": [
+        {
+          "id": level
+        },
+        {
+          "id": ou
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "dimension": "pe",
+      "items": [
+        {
+          "id": yr
+        }
+      ]
+    }
+  ],
+  "type": "pie",
+  "el": "chart2"
+};
+return [chart1, chart2];
+}
+
+chartPlugin.load(getchart("2017","Ot1P2HjvtvL", "LEVEL-2"));
+//chart ends here
+
+//on change function here
+function updatevariable() { 
+		yr = document.getElementById('year').value;
+		oulevel = document.getElementById('org_u').value;
+		console.log(yr);
+        split = oulevel.split(",");
+        ou = split[0];
+        level = split[1];				
+	    	chartPlugin.load(getchart(yr, ou, level));
+        reportTablePlugin.load(gettable(yr, ou, level));
+};
+
+</script>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-lg-2 panel-green">
+            <!-- SIDE MENU FOR FILTER--> 
+                <div class="">               
+                    <h2>Filter</h2>
+                    <form>
+                      <div class="form-group">
+                        <label for="pt">Period Type:</label>
+                        <select class="form-control" id="pt" name="pt" onchange="populatepe(this.id, 'year')">
+						  <option></option>
+                          <option value="yearly">Yearly</option>
+                          <option value="quarterly"> Quarterly</option>
+                        </select>
+                        <br>
+
+                        <label for="pe">Period</label>
+                        <select class="form-control" id="year" name="year" onchange="updatevariable()"></select>
+                        <br> 
+
+                        <label for="sel2">Parent Org Unit:</label>
+                        <select class="form-control" id="pou" name="pou" onchange="populateou(this.id, 'org_u')">
+						  <option></option>
+                          <option value="zambia">Zambia MOH</option>
+                          <option value="lp">Lusaka Province</option>
+                          <option value="cp">Central Province</option>
+                          <option>Luapula Province</option>
+                        </select>
+                        <br>      
+                        <label for="sel2">Org Unit:</label>
+                        <select class="form-control" id="org_u" name="org_u" onchange="updatevariable()"></select>
+                      </div>
+                    </form>
+                </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-8 col-lg-10">
+            <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-lg-6">
+                            <div class="panel panel-default mychart">
+                                    <div class="panel-body">
+                                        <div id="chart1"></div>
+                                    </div>
+                                </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-6">
+                            <div class="panel panel-default mychart">
+                                    <div class="panel-body">
+                                        <div id="chart2"></div>
+                                    </div>
+                                </div>
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                            <div class="panel panel-default mychart">
+                                    <div class="panel-body">
+                                        <div id="table1"></div>
+                                    </div>
+                                </div>
+                    </div>
+            </div>             
+        </div>
+      </div>
+</div>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- DHIS2 Plugins -->
+</body>
+
+</html>

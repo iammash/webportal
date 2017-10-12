@@ -38,29 +38,33 @@ body {
 
 /* Top Navigation */
 
-.myNav {
+.top-nav {
     padding: 0 15px;
 }
 
-.myNav>li {
+.top-nav>li {
     display: inline-block;
     float: left;
 }
 
-.myNav>li>a {
+.top-nav>li>a {
     padding-top: 15px;
     padding-bottom: 15px;
     line-height: 20px;
-    color: #fff !important;    
+    color: #fff;    
     font-size: 1.6em;
 }
 
-.myNav>li>a:hover{
+.top-nav>li>a:hover,
+.top-nav>li>a:focus,
+.top-nav>.open>a,
+.top-nav>.open>a:hover,
+.top-nav>.open>a:focus {
     color: #5CB85C;
     background-color: #fff;    
 }
 
-.myNav>.dropdown-menu {
+.top-nav>.open>.dropdown-menu {
     float: left;
     position: absolute;
     margin-top: 0;
@@ -72,7 +76,7 @@ body {
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
 }
 
-.myNav>.open>.dropdown-menu>li>a {
+.top-nav>.open>.dropdown-menu>li>a {
     white-space: normal;
 }
 
@@ -157,5 +161,7 @@ ul.alert-dropdown {
         padding: 0;
         margin: 0 auto;
     }
+
+
 
 }
