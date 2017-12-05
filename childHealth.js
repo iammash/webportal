@@ -1,7 +1,7 @@
 //DHIS2 plugin code starts here
-var url = 'http://localhost:8080/demo';
+var url = 'https://learn.zambiahmis.org';
 var username = 'rkaponde';
-var password ='Mashekwa1!';
+var password ='Password1';
 chartPlugin.url = url;
 chartPlugin.username = username ;
 chartPlugin.password = password ;
