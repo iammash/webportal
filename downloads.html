@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Zambia HMIS Portal - Score Cards</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="style.css" rel="stylesheet">
+	
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" style="display:none" href="#">Zambia HMIS Portal</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html" >Home</a></li>
+            <li><a href="scorecard.html" >Score Cards</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropbtn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">RMNCH <span class="caret"></span></a>
+              <ul class="dropdown-menu dropdown-content">
+                <li><a href="page.html">Maternal Health</a></li>
+                <li><a href="page.html">Child Health</a></li>
+              </ul>
+            </li>
+            <li><a href="page.html" >Malaria</a></li>
+            <li><a href="page.html" >NCDs</a></li>
+            <li><a href="page.html" >TB</a></li>
+            <li><a href="page.html" >Environmental health</a></li>
+            <li><a href="page.html" >Disease Surveillance</a></li>
+            <li><a href="page.html" >Report Submission </a></li>
+            <li><a href="page.html" >HIV - AIDS</a></li>
+            <li  class="active"><a href="downloads.html" >Downloads</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+    <header id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <h1>Zambia HMIS Portal</h1>
+          </div>
+          <div class="col-md-4">
+            <div class="dropdown-style pull-right">
+              <button class="btn btn-default dropdown-toggle" type="button" onclick="chartsOnly()" ><span class="caret"></span> Charts </button>
+              <button class="btn btn-default dropdown-toggle" type="button" onclick="tablesOnly()"><span class="caret"></span> Tables </button>
+              <button class="btn btn-default dropdown-toggle" type="button" id="showmaps" onclick="mapsOnly()"><span class="glyphicon glyphicon-map-marker"></span> Maps </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+        <div id="page-wrapper">
+                      <!-- /.row -->
+            <!-- /.row -->
+            <div class="row">
+              <div class="col-lg-2">
+                  <div class="panel panel-default">
+
+                      <div class="panel-body">
+                        <div class="">
+                            <h2>Filter</h2>
+                            <form>
+                              <div class="form-group">
+                                <label for="pt">Period Type:</label>
+                                <select class="form-control" id="pt" name="pt" onchange="populatepe(this.id, 'year')">
+                                  <option></option>
+                                  <option value="yearly">Yearly</option>
+                                  <option value="quarterly"> Quarterly</option>
+                                </select>
+                                <br>
+
+                                <label for="pe">Period</label>
+                                <select class="form-control" id="year" name="year" onchange="updatevariable()"></select>
+                                <br>
+
+                                <label for="sel2">Parent Org Unit:</label>
+                                <select class="form-control" id="pou" name="pou" onchange="populateou(this.id, 'org_u')">
+                                  <option value="zambia">Zambia MOH</option>
+                                  <option value="lp">Lusaka Province</option>
+                                  <option value="cp">Central Province</option>
+                                  <option>Luapula Province</option>
+                                </select>
+                              </div>
+                            </form>
+                        </div>
+                      </div>
+                      <!-- /.panel-body -->
+                  </div>
+              </div>
+              <!-- /.col-lg-4 -->
+
+                <div class="col-lg-10">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="panel panel-default" id="charts" >
+								<!-- /.panel-heading -->
+
+								<div class="panel-body" >
+									Charts
+								</div>
+
+								<!-- /.panel-body -->
+							</div>
+						</div>
+						
+						<div class="col-lg-12">
+							<div class="panel panel-default" id="tables" >
+								<!-- /.panel-heading -->
+
+								<div class="panel-body">
+									Tables
+								</div>
+
+								<!-- /.panel-body -->
+							</div>
+						</div>
+						
+						<div class="col-lg-12">
+							<div class="panel panel-default" id="maps" >
+								<!-- /.panel-heading -->
+
+								<div class="panel-body">
+									Maps
+								</div>
+
+								<!-- /.panel-body -->
+							</div>
+						</div>
+					</div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                          <div class="panel panel-default">
+                            <!-- /.panel-heading -->
+                              <div class="panel-body">
+                                  <!-- /.CHART GOES HERE -->
+                              </div>
+                                  <!-- /.panel-body -->
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="panel panel-default">
+                                  <!-- /.panel-heading -->
+                                  <div class="panel-body">
+                                      <!-- /.CHART GOES HERE -->
+                                  </div>
+                                  <!-- /.panel-body -->
+                          </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- /.col-lg-8 -->
+
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <footer class="footer navbar-inverse" style="display:none;" >
+      <div class="container">
+        <p class="text-muted">Copyright@2016, MOH Zambia</p>
+      </div>
+    </footer>
+    
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      function populatepe(p1,p2){
+          var p1 = document.getElementById(p1);
+          var p2 = document.getElementById(p2);
+
+          p2.innerHTML = "";
+          if(p1.value == "yearly"){
+              var optionArray = [
+                  "|",
+                  "2016|2016",
+                  "2015|2015",
+                  "2014|2014"
+              ];
+          } else if (p1.value == "quarterly"){
+              var optionArray = [
+                  "|",
+                  "2016Q1|1st Quarter 2016",
+                  "2016Q2|2nd Quarter 2016",
+                  "2016Q3|3rd Quarter 2016",
+                  "2016Q4|4th Quarter 2016"
+              ];
+          }
+          //Add options to dropdown
+          for(var option in optionArray){
+              var pair = optionArray[option].split("|");
+              var newOption = document.createElement("option");
+              newOption.value = pair[0];
+              newOption.innerHTML = pair[1];
+              p2.options.add(newOption);
+          }
+      };
+	
+		/*
+	function mapsOnly()
+		{
+			document.getElementById('charts').setAttribute("class", "style1");
+			document.getElementById('tables').setAttribute("class", "style1");
+			document.getElementById('maps').setAttribute("class", "style2");
+		}
+	function chartsOnly()
+		{
+			document.getElementById('maps').setAttribute("class", "style1");
+			document.getElementById('tables').setAttribute("class", "style1");
+			document.getElementById('charts').setAttribute("class", "style2");
+		}
+	function tablesOnly()
+		{
+			document.getElementById('charts').setAttribute("class", "style1");
+			document.getElementById('maps').setAttribute("class", "style1");
+			document.getElementById('tables').setAttribute("class", "style2");
+		}
+		*/
+		
+		$(document).ready(function(){
+			$("")
+		})
+    </script>
+</body>
+
+</html>

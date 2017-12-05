@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,425 +10,215 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Zambia MOH Portal</title>
+    <title>Home | Zambia HMIS Portal</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">
-
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <script src="ext-all.js"></script>
-    <script src="jquery-2.2.4.min.js"></script>
-    <script src="chart.js"></script>
-    <script src="js/reporttable.js"></script>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-<script>
-var url = 'http://localhost:8080/demo';
-var username = 'rkaponde';
-var password ='Mashekwa1!';
-chartPlugin.url = url;
-chartPlugin.username = username ;
-chartPlugin.password = password ;
-chartPlugin.loadingIndicator = true;
-crossDomain: true;
-
-reportTablePlugin.url = url;
-reportTablePlugin.username = username;
-reportTablePlugin.password = password;
-reportTablePlugin.loadingIndicator = true;
-
-function gettable(yr, ou, level){
-var table1 = {
-    "columns": [
-    {
-      "dimension": "dx",
-      "items": [
-        {
-          "id": "y3L6g8D81G2",
-          "name": "Dental Carries Total"
-        },
-        {
-          "id": "uyj18s8nOYp",
-          "name": "Diarrhoea non-bloody  (total)"
-        }
-      ]
-    }
-  ],
-  "rows": [
-    {
-      "dimension": "pe",
-      "items": [
-        {
-          "id": "2016",
-          "name": "2016"
-        }
-      ]
-    },
-    {
-      "dimension": "ou",
-      "items": [
-        {
-          "id": "LEVEL-2",
-          "name": "LEVEL-2"
-        },
-        {
-          "id": "Ot1P2HjvtvL",
-          "name": "Ot1P2HjvtvL"
-        }
-      ]
-    }
-  ],
-  "filters": null,
-  "title": "just Some Title",
-  "showRowTotals": false,
-  "showColSubTotals": false,
-  "showRowSubTotals": false,
-  "legendDisplayStyle": "FILL",
-  "legendDisplayStrategy": "FIXED",
-  "el": "table1"
-};
-return table1;
-}
-
-reportTablePlugin.load(gettable("2016","Ot1P2HjvtvL", "LEVEL-2"));
-
-//chart starts here
-function getchart(yr, ou, level){
-var chart1 = {
-    "columns": [
-    {
-      "dimension": "dx",
-      "items": [
-        {
-          "id": "MRaMX6gBI2h",
-          "name": " Hypertension (total)"
-        }
-      ]
-    }
-  ],
-  "rows": [
-    {
-      "dimension": "ou",
-      "items": [
-        {
-          "id": level
-        },
-        {
-          "id": ou
-        }
-      ]
-    }
-  ],
-  "filters": [
-    {
-      "dimension": "pe",
-      "items": [
-        {
-          "id": yr
-        }
-      ]
-    }
-  ],
-  "title": "Shani Shani Uko",
-  "type": "column",
-  "el": "chart1"
-};
-
-var chart2 = {
-    "columns": [
-    {
-      "dimension": "dx",
-      "items": [
-        {
-          "id": "y3L6g8D81G2",
-          "name": "Dental Carries Total"
-        }
-      ]
-    }
-  ],
-  "rows": [
-    {
-      "dimension": "ou",
-      "items": [
-        {
-          "id": level
-        },
-        {
-          "id": ou
-        }
-      ]
-    }
-  ],
-  "filters": [
-    {
-      "dimension": "pe",
-      "items": [
-        {
-          "id": yr
-        }
-      ]
-    }
-  ],
-  "title": "Shani Shani Uko",
-  "type": "pie",
-  "el": "chart2"
-};
-
-var chart3 = {
-    "columns": [
-    {
-      "dimension": "dx",
-      "items": [
-        {
-          "id": "xPJqmSaE0xm.REPORTING_RATE",
-          "name": "HIA3 (Hospital)Version 2016 (Reporting rates)"
-        },
-        {
-          "id": "BseX1xs1W0r.REPORTING_RATE",
-          "name": "HIA4 (Community)Version 2012 (Reporting rates)"
-        },
-        {
-          "id": "sHbZC96yrxU.REPORTING_RATE",
-          "name": "HIA1 (PHC)Version 2013 (Reporting rates)"
-        }
-      ]
-    }
-  ],
-  "rows": [
-    {
-      "dimension": "ou",
-      "items": [
-        {
-          "id": level
-        },
-        {
-          "id": ou
-        }
-      ]
-    }
-  ],
-  "filters": [
-    {
-      "dimension": "pe",
-      "items": [
-        {
-          "id": yr
-        }
-      ]
-    }
-  ],
-  "title": "Shani Shani Reporting Rates",
-  "type": "line",
-  "percentStackedValues": false,
-  "cumulativeValues": false,
-  "hideEmptyRowItems": "NONE",
-  "showAsEpiCurve": false,
-  "hideSubtitle": false,
-  "subtitle": "Yeah Yeah Yeah Yeah Yeah",
-  "el": "chart3"
-};
-return [chart1, chart2,chart3];
-}
-
-chartPlugin.load(getchart("2016","Ot1P2HjvtvL", "LEVEL-2"));
-//chart ends here
-
-//on change function here
-function updatevariable() { 
-		yr = document.getElementById('year').value;
-		oulevel = document.getElementById('org_u').value;
-        split = oulevel.split(",");
-        ou = split[0];
-        level = split[1];				
-		chartPlugin.load(getchart(yr, ou, level));
-        reportTablePlugin.load(gettable(yr, ou, level));
-		
-};
-</script>
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" style="display:none" href="#">Zambia HMIS Portal</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html" >Home</a></li>
+            <li><a href="scorecards.html" >Score Cards</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropbtn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">RMNCH <span class="caret"></span></a>
+              <ul class="dropdown-menu dropdown-content">
+                <li><a href="page.html">Maternal Health</a></li>
+                <li><a href="page.html">Child Health</a></li>
+              </ul>
+            </li>
+            <li><a href="page.html" >Malaria</a></li>
+            <li><a href="page.html" >NCDs</a></li>
+            <li><a href="page.html" >TB</a></li>
+            <li><a href="page.html" >Environmental health</a></li>
+            <li><a href="page.html" >Disease Surveillance</a></li>
+            <li><a href="page.html" >Report Submission </a></li>
+            <li><a href="page.html" >HIV - AIDS</a></li>
+            <li><a href="downloads.html" >Downloads</a></li>
+          </ul>
+        </div>
 
-    <div id="wrapper">
+      </div>
+    </nav>
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand logo-text" href="index.html">Zambia HMIS Portal</a>
+    <header id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>Zambia HMIS Portal</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+        <div id="page-wrapper">
+                      <!-- /.row -->
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <!-- /.panel-heading -->
+                          <div class="slideshow-container">
+                            <div class="mySlides fade">
+                              <img src="img/1.jpg" style="width:100%">
+                              <div class="text">Caption Text</div>
+                            </div>
+
+                            <div class="mySlides fade">
+                              <img src="img/2.jpg" style="width:100%">
+                              <div class="text">Caption Two</div>
+                            </div>
+
+                            <div class="mySlides fade">
+                              <img src="img/3.jpg" style="width:100%">
+                              <div class="text">Caption Three</div>
+                            </div>
+
+                            </div>
+                            <br>
+
+                            <div style="text-align:center">
+                              <span class="dot"></span>
+                              <span class="dot"></span>
+                              <span class="dot"></span>
+                            </div>
+
+                        <!-- /.panel-body -->
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                          <div class="panel panel-default">
+                            <!-- /.panel-heading -->
+                              <div class="panel-body">
+                                <address>
+                                    <strong>Minitry Of Health</strong><br>
+                                    Head Quarters, Ndeke house.<br>
+                                    P.O.Box 30205.<br>
+                                    Lusaka, Zambia<br><br>
+                                    <strong>Phone:</strong>: (260) 000-0000
+                                    <strong>Email:</strong>:<a href="mailto:#">first.last@example.com</a>
+                                </address>
+                              </div>
+                                  <!-- /.panel-body -->
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="panel panel-default alert alert-info">
+                                  <!-- /.panel-heading -->
+                              <div class="panel-body">
+                                  <p class="pull-right" style="text-align: center; font-weight: bold;">Plaese note that all information here is meant for viewing only, please contact MOH to request publication information. <br><br> For comments on any information, please email to MOH.</p>
+                              </div>
+                                  <!-- /.panel-body -->
+                          </div>
+                        </div>
+                    </div>
+
                 </div>
-                <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse navbar-right">
-                    <ul class="nav navbar-nav side-nav myNav">
-                        <li >
-                            <a href="index.html" class="active">Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="charts.html"> Charts</a>
-                        </li>
-                        <li>
-                            <a href="tables.html"> Tables</a>
-                        </li>
-                        <li>
-                            <a href="forms.html"> Forms</a>
-                        </li>
-                        <li>
-                            <a href="bootstrap-elements.html">Bootstrap Elements</a>
-                        </li>
-                        <li>
-                            <a href="bootstrap-grid.html">Bootstrap Grid</a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo"> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="demo" class="collapse">
+
+
+                <!-- /.col-lg-8 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                             <i class="icon-bookmark"></i> Useful Links
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <a href="http://www.moh.gov.zm/" target="_blank" class="list-group-item"><i class="fa fa-comment fa-fw"></i> Zambia MOH Website</a>
+                                <a href="https://www.zambiahmis.org" target="_blank" class="list-group-item"><i class="fa fa-twitter fa-fw"></i> Zambia HMIS Webiste</a>
+                                <a href="https://learn.zambiahmis.org" target="_blank" class="list-group-item"><i class="fa fa-envelope fa-fw"></i> Learn HMIS Website </a>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="chat-panel panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-comments fa-fw"></i> Achievements
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <ul class="chat">
                                 <li>
-                                    <a href="#">Dropdown Item</a>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
                                 </li>
-                                <li>
-                                    <a href="#">Dropdown Item</a>
+                                <li class="left">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                </li>
+                                <li class="left">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
-                            <a href="blank-page.html">Blank Page</a>
-                        </li>
-                        <li>
-                            <a href="index-rtl.html">RTL Dashboard</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </nav>
-
-        <div id="page-wrapper">
-            <!-- Top Panel for selecting Period and Location starts here -->
-            <div class="container-fluid">
-                <div class="row float-select" >                    
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                        <div>Period</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="panel-footer">
-                                    <div class="row">
-                                        <div class="col-xs-12 text-center">
-                                            <select class="form-control"  id="year" name="year" onchange="updatevariable()">
-                                                <option value="2016">2016</option>
-                                                <option value="2015">2015</option>
-                                                <option value="2014">2014</option>
-                                                <option value="2013">2013</option>
-                                            </select>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
-                    
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                        <div>Organization Unit</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="panel-footer">
-                                  <select class="form-control" id="org_u" name="org_u" onchange="updatevariable()">
-                                    <option value="Vth0fbpFcsO,LEVEL-2" >Zambia Minstry Of Health</option>
-                                    <option value="KozcEjeTyuD,LEVEL-3"> Lusaka Pronvince</option>
-                                    <option value="AWn3s2RqgAN,LEVEL-3">Central Province</option>
-                                    <option value="g1bv2xjtV0w,LEVEL-3">Western Pronvince</option>
-                                  </select>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>                        
-                    </div>
+                    <!-- /.panel .chat-panel -->
                 </div>
-                <!-- Top Panel for selecting Period and Location starts here -->
-                <!-- /.row -->
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-default mychart">
-                            <div class="panel-body">
-                                <div id="chart1"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="panel panel-default mychart">
-                            <div class="panel-body">
-                                <div id="chart2"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="panel panel-default mychart">
-                            <div class="panel-body">
-                                <div id="table1"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-default mychart">
-                            <div class="panel-body">
-                                <div id="chart3"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                <!-- /.col-lg-4 -->
             </div>
-            <!-- /.container-fluid -->
-
+            <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
 
+    <footer class="footer navbar-inverse" style="display:none;" >
+      <div class="container">
+        <p class="text-muted">Copyright@2017, MOH Zambia</p>
+      </div>
+    </footer>
+
     <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
+    
+    <script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+           slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+    </script>
+	<!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- DHIS2 Plugins -->
 
 </body>
 
