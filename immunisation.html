@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Immunisation | Zambia MOH Portal</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script src="ext-all.js"></script>
+    <script src="jquery.min.js"></script>
+    <script src="chart.js"></script>
+    <script src="js/filterjs.js"></script>
+    <script src="data/immunisation.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<script>
+
+
+</script>
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand logo-text" href="index.html">Zambia HMIS Portal</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse myNav">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="scorecards.html">Score Cards</a></li>
+          <li  class="dropdown active">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Program Information<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="maternalhealth.html">Maternal Health</a></li>
+              <li><a href="childhealth.html">Child Health</a></li>
+              <li><a href="immunisation.html">Immunisation</a></li>
+            </ul>
+          </li>
+          <li><a href="download.html">Downloads</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
+<div id="page-wrapper">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-lg-2 panel-green">
+            <!-- SIDE MENU FOR FILTER--> 
+                <div class="">               
+                    <h2>Filter</h2>
+                    
+                        <div class="form-group">
+                            <label for="pt">Period Type:</label>
+                            <select class="form-control" id="pt" name="pt" onchange="populatepe(this.id, 'year')">
+                              <option></option>
+                              <option value="yearly">Yearly</option>
+                              <option value="quarterly"> Quarterly</option>
+                            </select>
+                            <br>
+    
+                            <label for="pe">Period</label>
+                            <select class="form-control" id="year" name="year" onchange="updatevariable()"></select>
+                            <br>
+
+                          <label for="sel2">Org Unit:</label>
+                          <select class="form-control" id="org_u" name="org_u" onchange="updatevariable()">
+                              <option value="Vth0fbpFcsO,LEVEL-2" >Zambia Minstry Of Health</option>
+                              <option value="KozcEjeTyuD,LEVEL-3"> Lusaka Pronvince</option>
+                              <option value="AWn3s2RqgAN,LEVEL-3">Central Province</option>
+                              <option value="g1bv2xjtV0w,LEVEL-3">Western Pronvince</option>
+                          </select>
+                        </div>
+                </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-8 col-lg-10">
+            <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                            <div class="panel panel-default mychart">
+                                    <div class="panel-body">
+                                        <div id="i1"></div>
+                                    </div>
+                                </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                        <div class="panel panel-default mychart">
+                                <div class="panel-body">
+                                    <div id="i2"></div>
+                                </div>
+                            </div>
+                </div>
+                    
+            </div>            
+        </div>
+      </div>
+</div> <!-- End of container fluid -->
+</div> <!-- end of page wraper -->
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- DHIS2 Plugins -->
+</body>
+
+</html>
