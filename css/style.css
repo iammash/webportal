@@ -1,115 +1,148 @@
+/* Remove Round Corners Global
+* {
+  border-radius: 0 !important;
+}
+
+ */
+
+
 body{
-    background: #f4f4f4;
+  background: #f4f4f4;
 }
 
 .navbar{
-    min-height: 33px !important;
-    margin-bottom: 0;
-    border-radius: 0;
+  min-height: 33px !important;
+  margin-bottom: 0;
+  border-radius: 0;
+  border: 0;
 }
 
 .navbar-nav > li > a, .navbar-brand{
-    padding-top: 6px;
-    padding-bottom: 0;
-    height: 33px;
+  padding-top: 6px !important;
+  padding-bottom: 0 !important;
+  height: 33px !important;
 }
 
-.navbar-default {
-  background-color: #47c537;
-  border-color: #19ac07;
+/* Dropdown Button */
+.dropbtn {
+    cursor: pointer;
 }
-.navbar-default .navbar-brand {
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px !important;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #000;
+}
+
+/* END OF DROP DOWN */
+
+
+
+.main-color-bg{
+  background-color: #e74c3c;
+  border-color: #c0392b;
   color: #ffffff;
 }
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-  color: #a3d2ac;
-}
-.navbar-default .navbar-text {
+
+#header{
+  background: #333333;
   color: #ffffff;
-}
-.navbar-default .navbar-nav > li > a {
-  color: #ffffff;
-}
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-  color: #a3d2ac;
-}
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-  color: #a3d2ac;
-  background-color: #19ac07;
-}
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus {
-  color: #a3d2ac;
-  background-color: #19ac07;
-}
-.navbar-default .navbar-toggle {
-  border-color: #19ac07;
-}
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-  background-color: #19ac07;
-}
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #ffffff;
-}
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
-  border-color: #ffffff;
-}
-.navbar-default .navbar-link {
-  color: #ffffff;
-}
-.navbar-default .navbar-link:hover {
-  color: #a3d2ac;
+  padding-bottom: : 10px !important;
+  margin-bottom: 15px !important;
+  margin-top: 33px !important;
 }
 
-
-.main-color-bg {
-    background-color: #47c537 !important;
-    border-color: #19ac07 !important; 
-    color: #ffffff !important; 
+#header .dropdown-style{
+  padding-top: 20px !important;
 }
 
+/* SLIDDER STYLE */
+.mySlides {display:none}
+
+    /* Slideshow container */
+    .slideshow-container {
+      max-width: 1000px;
+      position: relative;
+      margin: auto;
+    }
+
+    /* Caption text */
+    .text {
+      color: #f2f2f2;
+      font-size: 15px;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+    }
 
 
+    /* The dots/bullets/indicators */
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
 
+    .active {
+      background-color: #717171;
+    }
 
+    /* Fading animation */
+    .fade {
+      -webkit-animation-name: fade;
+      -webkit-animation-duration: 1.5s;
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
 
+    @-webkit-keyframes fade {
+      from {opacity: .4}
+      to {opacity: 1}
+    }
 
+    @keyframes fade {
+      from {opacity: .4}
+      to {opacity: 1}
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media (max-width: 767px) {
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #ffffff;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #a3d2ac;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #a3d2ac;
-    background-color: #19ac07;
-  }
-}
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+      .text {font-size: 11px}
+    }
